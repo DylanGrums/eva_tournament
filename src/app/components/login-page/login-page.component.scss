@@ -1,0 +1,434 @@
+//Variables
+$color-gray-light: hsla(0, 0, 97, 1);
+$color-gray: hsla(0, 0, 50, 1);
+
+$color-white: hsla(0, 0, 100, 1);
+
+$color-primary-light: hsla(184, 70, 54, 1);
+$color-primary: hsla(184, 86, 41, 1);
+$color-primary-dark: hsla(211, 70, 68, 1);
+
+$color-secondary-light: hsla(16, 82, 73, 1);
+$color-secondary: hsla(4, 78, 66, 1);
+
+$color-facebook: hsla(220, 46, 48, 1);
+$color-twitter: hsla(203, 89, 53, 1);
+$color-github: hsla(207, 11, 16, 1);
+
+$font-stack-body: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI",
+  Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+$font-stack-header: "Dancing Script";
+
+// End of Variables
+
+// Mixins
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 41.87em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 46.87em) {
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 56em) {
+      @content;
+    }
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    }
+  }
+}
+// End of Mixins
+
+.container {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+
+
+// Placeholders
+%align-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+%padding {
+  padding: 0 3rem;
+
+  @include respond(tab-port) {
+    padding: 0 2rem;
+  }
+}
+
+%flip-transition {
+  transition: linear 0.2s transform;
+}
+
+// End of placeholders
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 59%;
+  }
+
+  @include respond(phone) {
+    font-size: 55%;
+  }
+}
+
+body {
+  background-color: #f7f7f7;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80' width='80' height='80'%3E%3Cpath fill='%23999999' fill-opacity='0.1' d='M14 16H9v-2h5V9.87a4 4 0 1 1 2 0V14h5v2h-5v15.95A10 10 0 0 0 23.66 27l-3.46-2 8.2-2.2-2.9 5a12 12 0 0 1-21 0l-2.89-5 8.2 2.2-3.47 2A10 10 0 0 0 14 31.95V16zm40 40h-5v-2h5v-4.13a4 4 0 1 1 2 0V54h5v2h-5v15.95A10 10 0 0 0 63.66 67l-3.47-2 8.2-2.2-2.88 5a12 12 0 0 1-21.02 0l-2.88-5 8.2 2.2-3.47 2A10 10 0 0 0 54 71.95V56zm-39 6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm40-40a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM15 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm40 40a2 2 0 1 0 0-4 2 2 0 0 0 0 4z'%3E%3C/path%3E%3C/svg%3E");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: $font-stack-body;
+
+  @include respond(tab-land) {
+    padding: 2rem;
+  }
+}
+
+h1,
+h2 {
+  font-weight: normal;
+}
+
+h1 {
+  font-family: $font-stack-header;
+  font-size: 6rem;
+  margin-bottom: 2.5rem;
+
+  @include respond(phone) {
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+  }
+}
+
+h2 {
+  font-size: 3rem;
+  text-shadow: 0 0.2rem 0.2rem hsla(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
+
+  @include respond(phone) {
+    margin-bottom: 2rem;
+  }
+}
+
+p {
+  color: $color-gray;
+  font-size: 1.5rem;
+  margin-bottom: 2.5rem;
+
+  @include respond(phone) {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.button {
+  display: block;
+  padding: 1.5rem 5rem;
+  font-size: 1.8rem;
+  color: $color-white;
+  text-decoration: none;
+  border-radius: 5rem;
+  width: 22rem;
+  text-align: center;
+  margin: 0 auto 2.5rem;
+
+  &__ghost {
+    border: 0.2rem solid $color-white;
+    transition: 0.2s linear all;
+
+    &:hover {
+      background-color: hsla(0, 0, 100, 1);
+    }
+
+    &--primary {
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
+    &--secondary {
+      &:hover {
+        color: $color-secondary;
+      }
+    }
+    @include respond(phone) {
+      padding: 1.5rem 3rem;
+      margin-bottom: 0;
+    }
+  }
+
+  &__primary,
+  &__secondary {
+    box-shadow: 0 0.2rem 0.3rem hsla(0, 0, 0, 0.2);
+    transition: 0.2s linear all;
+    &:hover {
+      transform: scale(1.05) translateY(-0.3rem);
+      box-shadow: 0 0.4rem 1.2rem hsla(0, 0, 0, 0.08);
+    }
+  }
+
+  &__primary {
+    background-image: linear-gradient(
+      to bottom,
+      $color-primary-light,
+      $color-primary-dark
+    );
+
+    &:hover {
+      background-image: linear-gradient(
+        to bottom,
+        $color-primary-dark,
+        $color-primary-dark
+      );
+    }
+  }
+
+  &__secondary {
+    background-image: linear-gradient(
+      to bottom,
+      $color-secondary-light,
+      $color-secondary
+    );
+  }
+}
+
+.form-wrapper {
+  background-color: $color-white;
+  display: flex;
+  min-height: 80vh;
+  width: 88rem;
+  box-shadow: 0 0.2rem 0.6rem hsla(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+  perspective: 300rem;
+
+  @include respond(tab-port) {
+    min-height: 85vh;
+  }
+
+  @include respond(phone) {
+    display: block;
+    min-height: auto;
+  }
+
+  &__left {
+    @extend %align-center;
+    color: $color-white;
+    text-align: center;
+    flex: 1 0 37%;
+
+    @include respond(tab-port) {
+      flex: 1 0 30%;
+    }
+
+    &--sign-in {
+      // display: none;
+      @extend %align-center;
+      @extend %padding;
+      @extend %flip-transition;
+      flex-grow: 1;
+      background-image: linear-gradient(
+        to bottom,
+        $color-primary-light,
+        $color-primary-dark
+      );
+
+      @include respond(phone) {
+        padding: 3rem;
+        width: 100%;
+      }
+    }
+
+    &--sign-up {
+      @extend %padding;
+      @extend %align-center;
+      @extend %flip-transition;
+      flex-grow: 1;
+      background-image: linear-gradient(
+        to bottom,
+        $color-secondary-light,
+        $color-secondary
+      );
+
+      @include respond(phone) {
+        padding: 3rem;
+        width: 100%;
+      }
+    }
+  }
+
+  &__right {
+    flex: 1 0 63%;
+    @extend %align-center;
+    position: relative;
+    transform-style: preserve-3d;
+    @extend %flip-transition;
+
+    @include respond(tab-port) {
+      flex: 1 0 60%;
+    }
+
+    @include respond(phone) {
+      padding: 2rem;
+    }
+
+    &--sign-in {
+      @extend %align-center;
+      @extend %flip-transition;
+      background-color: $color-white;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      flex-grow: 1;
+
+      h1 {
+        color: $color-primary;
+      }
+
+      @include respond(phone) {
+        position: static;
+      }
+    }
+
+    &--sign-up {
+      @extend %align-center;
+      @extend %flip-transition;
+      background-color: $color-white;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      flex-grow: 1;
+      transform: rotateX(180deg);
+
+      h1 {
+        color: $color-secondary;
+      }
+
+      @include respond(phone) {
+        position: static;
+      }
+    }
+
+    &.is-flipped {
+      transform: rotateX(180deg);
+    }
+  }
+
+  .social-login {
+    margin-bottom: 3rem;
+    display: flex;
+    &__link {
+      text-decoration: none;
+      font-size: 2.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0.2rem 0.3rem hsla(0, 0, 0, 0.12);
+      border-radius: 0.5rem;
+      height: 5.5rem;
+      width: 5.5rem;
+      transition: 0.2s linear all;
+      &:hover {
+        transform: scale(1.05) translateY(-0.3rem);
+        box-shadow: 0 0.3rem 0.6rem hsla(0, 0, 0, 0.08);
+      }
+
+      &--facebook {
+        color: $color-facebook;
+      }
+
+      &--twitter {
+        color: $color-twitter;
+      }
+
+      &--github {
+        color: $color-github;
+      }
+
+      &:not(:last-child) {
+        margin-right: 1.5rem;
+      }
+    }
+  }
+
+  .divider {
+    width: 25rem;
+    margin-bottom: 3rem;
+    text-align: center;
+
+    @include respond(phone) {
+      margin-bottom: 2rem;
+    }
+
+    span {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.6rem;
+      color: $color-gray;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        background-color: $color-gray-light;
+        height: 0.3rem;
+        width: 42%;
+      }
+    }
+  }
+
+  .form {
+    width: 30rem;
+    text-align: center;
+    fieldset {
+      border: none;
+    }
+
+    &__input {
+      width: 100%;
+      padding: 1.5rem 2rem;
+      border: none;
+      background-color: $color-gray-light;
+      margin-bottom: 2rem;
+      font-size: 1.6rem;
+      border-radius: 0.5rem;
+    }
+
+    .forgot-password {
+      color: $color-gray;
+      font-size: 1.4rem;
+      text-decoration: none;
+    }
+  }
+  .inactive {
+    display: none;
+  }
+}

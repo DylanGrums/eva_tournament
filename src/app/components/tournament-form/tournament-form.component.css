@@ -1,0 +1,11 @@
+[nz-form]:not(.ant-form-inline):not(.ant-form-vertical) {
+  max-width: 600px;
+}
+
+
+.test {
+  display: flex;
+  align-content: center;
+  place-items: center;
+  flex-direction: row;
+}

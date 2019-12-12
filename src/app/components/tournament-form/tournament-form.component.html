@@ -1,0 +1,112 @@
+<div class="gutter-example" #target>
+  <div nz-row nzGutter="24" nzType="flex" nzJustify="space-between">
+    <div nz-col nzSpan="16">
+
+      <form nz-form [nzLayout]="validateForm.get('formLayout')?.value" [formGroup]="validateForm"
+        (ngSubmit)="submitForm()">
+        <nz-form-item>
+          <nz-form-label>Title</nz-form-label>
+          <nz-form-control nzErrorTip="Please input your username!">
+            <input nz-input formControlName="title" placeholder="Choisir un titre pour votre tournois" />
+          </nz-form-control>
+        </nz-form-item>
+
+
+        <nz-form-item>
+          <nz-form-label>Jeux</nz-form-label>
+          <nz-form-control nzErrorTip="Please input your username!">
+            <input nz-input #searchInput formControlName="game" placeholder="Choisir un jeu" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <div style="background: #ECECEC;padding:30px;">
+          <div nz-row [nzGutter]="8">
+            <div nz-col [nzSpan]="6" *ngFor="let giph of giphs; let i = index" mat-card-image>
+              <nz-card nzHoverable (click)="selectGame(i, giph)" [nzExtra]="(selectedGameIndex === i) ? selected: ''"
+                [nzCover]="coverTemplate" [nzLoading]="isSearching" [nzHoverable]="true">
+                <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta>
+                <ng-template #coverTemplate>
+                  <!-- <img alt="example" src="{{giph.images.fixed_width.url}}" /> -->
+                  <img *ngIf="!isSearching" alt="example" src="{{giph.imageUrl}}" style="height: 230px;" />
+                </ng-template>
+
+                <ng-template #selected style="height: 0;">
+                  <i nz-icon style="position: absolute;" [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                    [nzTwotoneColor]="'#52c41a'"></i>
+                </ng-template>
+              </nz-card>
+            </div>
+          </div>
+          <nz-empty *ngIf="giphs.length === 0 && !isSearching"></nz-empty>
+        </div>
+
+        <nz-form-item style="margin-top: 20px;">
+          <nz-form-label>Date</nz-form-label>
+          <nz-form-control>
+            <nz-range-picker formControlName="date" (ngModelChange)='formatDate()' nzFormat='shortDate' nzSize="large">
+            </nz-range-picker>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label>Platforme</nz-form-label>
+          <nz-radio-group formControlName="platform" [nzSize]="'large'">
+            <label nz-radio-button nzValue="Pc">Pc</label>
+            <label nz-radio-button nzValue="Ps4">Ps4</label>
+            <label nz-radio-button nzValue="Xbox360">Xbox360</label>
+            <label nz-radio-button nzValue="Mobile">Mobile</label>
+          </nz-radio-group>
+        </nz-form-item>
+
+        <!-- [nzType]="'flex'" [nzAlign]="'middle'" -->
+        <div class="test">
+
+          
+          <nz-form-item>
+            <nz-form-label>Joueurs</nz-form-label>
+            <nz-form-control nzErrorTip="Please input your Password!">
+              <nz-input-number formControlName="players" [nzSize]="'large'" [nzMin]="1" [nzMax]="256" [nzStep]="1">
+              </nz-input-number>
+            </nz-form-control>
+          </nz-form-item>
+          
+          <nz-form-item style="margin-top: 25px;margin-left: 20px;">
+          <nz-form-control>
+            <nz-radio-group formControlName="playerStructure">
+              <label nz-radio nzValue="Joueurs">Joueurs</label>
+              <label nz-radio nzValue="Teams">Teams</label>
+            </nz-radio-group>
+          </nz-form-control>
+        </nz-form-item>
+
+      </div>
+
+        <nz-form-item>
+          <nz-form-control>
+            <button nz-button nzType="primary">Submit</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+    <div nz-col nzSpan="6">
+      <nz-affix [nzTarget]="target">
+        <nz-card *ngIf="(validateForm.get('title').value || formatDate || selectedGame) != null" nzHoverable
+          style="width:275px; float: right;" [nzExtra]="" [nzCover]="(selectedGame) ? gameCover : ''">
+          <nz-card-meta style="margin-top: 15px;" *ngIf="validateForm.get('title').value"
+            nzTitle="{{validateForm.get('title').value}}" [nzDescription]=description></nz-card-meta>
+        </nz-card>
+        <ng-template #gameCover>
+          <img alt="example" src="{{selectedGame.imageUrl}}" style="height: 360px;" />
+        </ng-template>
+        <ng-template #description>
+          <p>{{formatedDate}}</p>
+          <p>{{validateForm.get('platform').value}}</p>
+          <div style="display: flex;">
+            <p>{{validateForm.get('players').value}}</p>
+            <p style="margin-left: 10px;">{{validateForm.get('playerStructure').value}}</p>
+          </div>
+        </ng-template>
+      </nz-affix>
+    </div>
+  </div>
+</div>
