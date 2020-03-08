@@ -11,9 +11,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import fr from '@angular/common/locales/fr';
-import { TournamentFormComponent } from './components/tournament-form/tournament-form.component';
-import { LayoutComponent } from './components/layout/layout.component';
+import { TournamentFormComponent } from './components/dashboard/tournament-form/tournament-form.component';
+import { LayoutComponent } from './components/dashboard/layout/layout.component';
 import { LoginPageComponent } from './components/login-page/login-page.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { LoginComponent } from './components/login-page/login/login.component';
+import { RegisterComponent } from './components/login-page/register/register.component';
+import { SummaryComponent } from './components/dashboard/summary/summary.component';
+import { SettingsComponent } from './components/dashboard/settings/settings.component';
+import { PlayersComponent } from './components/dashboard/players/players.component';
+import { PlacementsComponent } from './components/dashboard/placements/placements.component';
 
 registerLocaleData(fr);
 
@@ -23,6 +30,13 @@ registerLocaleData(fr);
     LayoutComponent,
     TournamentFormComponent,
     LoginPageComponent,
+    LandingComponent,
+    LoginComponent,
+    RegisterComponent,
+    SummaryComponent,
+    SettingsComponent,
+    PlayersComponent,
+    PlacementsComponent,
   ],
   imports: [
     BrowserModule,

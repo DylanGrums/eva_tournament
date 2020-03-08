@@ -1,0 +1,30 @@
+$color-gray-light: hsla(0, 0, 97, 1);
+$color-gray: hsla(0, 0, 50, 1);
+
+.form {
+  width: 30rem;
+  text-align: center;
+  fieldset {
+    border: none;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 1.5rem 2rem;
+    border: none;
+    background-color: $color-gray-light;
+    margin-bottom: 2rem;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+  }
+
+  .forgot-password {
+    color: $color-gray;
+    font-size: 1.4rem;
+    text-decoration: none;
+  }
+}
+
+.inactive {
+  display: none;
+}

@@ -48,3 +48,5 @@ export var mockGames = [
   { name: "Call Of Duty", imageUrl: "https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png", category: "fps" },
   { name: "Call Of Duty", imageUrl: "https://www.toornament.com/disciplines/cod_bo4/img/cover-225x300-medium.jpg?1558961487", category: "fps" }
 ]
+
+

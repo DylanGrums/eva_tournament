@@ -2,7 +2,7 @@
   <div nz-row nzGutter="24" nzType="flex" nzJustify="space-between">
     <div nz-col nzSpan="16">
 
-      <form nz-form [nzLayout]="validateForm.get('formLayout')?.value" [formGroup]="validateForm"
+      <form nz-form [nzLayout]="'vertical'" [formGroup]="validateForm"
         (ngSubmit)="submitForm()">
         <nz-form-item>
           <nz-form-label>Title</nz-form-label>
@@ -21,7 +21,7 @@
 
         <div style="background: #ECECEC;padding:30px;">
           <div nz-row [nzGutter]="8">
-            <div nz-col [nzSpan]="6" *ngFor="let giph of giphs; let i = index" mat-card-image>
+            <div nz-col [nzSpan]="6" style="width: 180px;" *ngFor="let giph of giphs; let i = index" mat-card-image>
               <nz-card nzHoverable (click)="selectGame(i, giph)" [nzExtra]="(selectedGameIndex === i) ? selected: ''"
                 [nzCover]="coverTemplate" [nzLoading]="isSearching" [nzHoverable]="true">
                 <nz-card-meta nzTitle="Europe Street beat" nzDescription="www.instagram.com"></nz-card-meta>

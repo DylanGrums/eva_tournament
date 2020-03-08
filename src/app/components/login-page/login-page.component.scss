@@ -4,12 +4,13 @@ $color-gray: hsla(0, 0, 50, 1);
 
 $color-white: hsla(0, 0, 100, 1);
 
-$color-primary-light: hsla(184, 70, 54, 1);
-$color-primary: hsla(184, 86, 41, 1);
-$color-primary-dark: hsla(211, 70, 68, 1);
+$color-primary-light: #2185d5;
+$color-primary: #2185d5 ;
+$color-primary-dark: #2185d5;
 
-$color-secondary-light: hsla(16, 82, 73, 1);
-$color-secondary: hsla(4, 78, 66, 1);
+
+$color-secondary-light: #ff0000;
+$color-secondary: #ff0000;
 
 $color-facebook: hsla(220, 46, 48, 1);
 $color-twitter: hsla(203, 89, 53, 1);
@@ -51,6 +52,7 @@ $font-stack-header: "Dancing Script";
     justify-content: center;
     height: 100%;
     align-items: center;
+    background-color: #393e46;
 }
 
 
@@ -221,7 +223,7 @@ p {
 .form-wrapper {
   background-color: $color-white;
   display: flex;
-  min-height: 80vh;
+  height: 90%;
   width: 88rem;
   box-shadow: 0 0.2rem 0.6rem hsla(0, 0, 0, 0.1);
   border-radius: 1rem;
@@ -340,42 +342,6 @@ p {
     }
   }
 
-  .social-login {
-    margin-bottom: 3rem;
-    display: flex;
-    &__link {
-      text-decoration: none;
-      font-size: 2.5rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 0.2rem 0.3rem hsla(0, 0, 0, 0.12);
-      border-radius: 0.5rem;
-      height: 5.5rem;
-      width: 5.5rem;
-      transition: 0.2s linear all;
-      &:hover {
-        transform: scale(1.05) translateY(-0.3rem);
-        box-shadow: 0 0.3rem 0.6rem hsla(0, 0, 0, 0.08);
-      }
-
-      &--facebook {
-        color: $color-facebook;
-      }
-
-      &--twitter {
-        color: $color-twitter;
-      }
-
-      &--github {
-        color: $color-github;
-      }
-
-      &:not(:last-child) {
-        margin-right: 1.5rem;
-      }
-    }
-  }
 
   .divider {
     width: 25rem;
@@ -431,4 +397,11 @@ p {
   .inactive {
     display: none;
   }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

@@ -24,7 +24,8 @@ export class TournamentFormComponent implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
     console.log('form', this.validateForm.value)
-    this.formatDate()
+
+    this.formatDate();
   }
 
   get isHorizontal(): boolean {
@@ -44,6 +45,8 @@ export class TournamentFormComponent implements OnInit {
       formatedDateArray.push(formatDate(date, 'shortDate', 'fr'))
     });
     this.formatedDate = formatedDateArray[0] + ' - ' + formatedDateArray[1]
+    this.validateForm.value.date[0] = formatedDateArray[0]
+    this.validateForm.value.date[1] = formatedDateArray[1]
   }
 
   constructor(
@@ -56,7 +59,6 @@ export class TournamentFormComponent implements OnInit {
     this.formatedDate = null
     this.selectedGame = null
     this.validateForm = this.fb.group({
-      formLayout: ['vertical'],
       title: [null, [Validators.required]],
       game: [null, [Validators.required]],
       platform: [null, [Validators.required]],
